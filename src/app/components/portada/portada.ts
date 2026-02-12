@@ -14,7 +14,7 @@ export class Portada implements OnInit {
   fadingOut = false;
   progreso = 0;
   botonesInvertidos = false;
-  mensajeActual = 'Iniciando nuestra historia...'; // Mensaje inicial
+  mensajeActual = 'Iniciando nuestra historia...';
 
   fotos = [
     'foto1.jpeg', 'foto2.jpeg', 'foto3.jpeg', 
@@ -29,24 +29,22 @@ export class Portada implements OnInit {
   }
 
   iniciarCarga() {
-    // Cambiamos a 80ms para que sea más lento y disfrutable
     const intervalo = setInterval(() => {
       if (this.progreso < 99) {
         this.progreso++;
-        this.actualizarMensaje(); // Llamamos a la función para cambiar el texto
+        this.actualizarMensaje();
       } else {
         clearInterval(intervalo);
         this.mensajeActual = 'Todo listo danielsss... ❤️';
         setTimeout(() => {
           this.progreso = 100;
           this.finalizarCarga();
-        }, 1500); // Pausa extra en el 99% para leer el último mensaje
+        }, 1500);
       }
       this.cdr.detectChanges();
-    }, 80); 
+    }, 8); 
   }
 
-  // Lógica para cambiar los mensajes según el progreso
   actualizarMensaje() {
     if (this.progreso < 20) {
       this.mensajeActual = 'Cargando noches de buldak...';
@@ -72,7 +70,9 @@ export class Portada implements OnInit {
     }, 500);
   }
 
-  intercambiar() { this.botonesInvertidos = !this.botonesInvertidos; }
+  intercambiar() { 
+    this.botonesInvertidos = !this.botonesInvertidos; 
+  }
   
   aceptar() {
     localStorage.setItem('sanValentinAceptado', 'true');

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+
+.timeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff5f7;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.development-box {
+  text-align: center;
+}
+
+.heart-breathing {
+  font-size: 5rem;
+  display: inline-block;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.status-text {
+  margin-top: 20px;
+  color: #ff4d6d;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Animación de Respiración */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(255, 77, 109, 0.2));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.6));
+  }
+}
+
+/* Animación de entrada al cargar la pantalla */
+.fade-in {
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

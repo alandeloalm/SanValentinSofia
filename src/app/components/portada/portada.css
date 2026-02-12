@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
 
-/* --- CAPA DE INTRO --- */
 .intro-overlay {
   position: fixed;
   inset: 0;
@@ -40,14 +39,13 @@
 }
 
 .heart-img {
-  width: 125%; /* Imagen más grande para evitar bordes blancos */
+  width: 125%;
   height: 125%;
   object-fit: cover;
   transform: rotate(calc(var(--i) * (-360deg / 8))) scale(1.1);
   animation: mantenerDerecha 25s linear infinite;
 }
 
-/* --- BARRA DE PROGRESO --- */
 .progress-wrapper {
   width: 85%;
   max-width: 400px;
@@ -66,7 +64,7 @@
 .love-bar {
   height: 100%;
   background: white;
-  transition: width 0.2s ease-out; /* Transición más suave para la barra */
+  transition: width 0.2s ease-out;
 }
 
 .loading-text {
@@ -75,16 +73,9 @@
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
-  /* Animación suave cuando cambia el texto */
   animation: fadeText 0.5s ease-in-out;
 }
 
-@keyframes fadeText {
-  from { opacity: 0.5; transform: translateY(3px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- SECCIÓN PREGUNTA --- */
 .contenedor-san-valentin {
   display: flex;
   flex-direction: column;
@@ -93,6 +84,13 @@
   height: 100vh;
   background-color: #fff5f7;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contenido-pregunta {
+  z-index: 10;
+  margin-bottom: 100px;
 }
 
 h1 {
@@ -106,6 +104,7 @@ h1 {
   display: flex;
   gap: 20px;
   transition: all 0.3s ease;
+  justify-content: center;
 }
 
 .invertir {
@@ -125,7 +124,19 @@ button {
 .btn-si { background: #ff4d6d; color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3); }
 .btn-no { background: #adb5bd; color: white; }
 
-/* --- KEYFRAMES --- */
+.corazones-superior-repeat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-image: url('/corazones.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  z-index: 5;
+  pointer-events: none;
+}
+
 @keyframes girar {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -136,6 +147,11 @@ button {
   to { transform: rotate(calc(var(--i) * (-360deg / 8) - 360deg)) scale(1.1); }
 }
 
+@keyframes fadeText {
+  from { opacity: 0.5; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .fade-out { animation: fadeOut 0.8s forwards; }
 .fade-in { animation: fadeIn 1.2s ease-out; }
 
@@ -144,14 +160,76 @@ button {
 }
 
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px); 
-    filter: blur(10px); 
+  from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@media (max-width: 768px) {
+  .heart-item { transform: rotate(calc(var(--i) * (360deg / 8))) translateY(-90px) !important; }
+  .heart-frame { width: 65px !important; height: 65px !important; }
+  .circle-container { width: 200px !important; height: 200px !important; }
+  h1 { font-size: 2.2rem; }
+}
+
+/* --- BANNER DE FLORES INFERIOR --- */
+.flower-banner-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 220px; /* Ajusta según el alto de tus flores */
+  display: flex;
+  align-items: flex-end;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Flores de las esquinas */
+.flower-corner {
+  position: absolute;
+  bottom: 0;
+  width: 250px; /* Ajusta según el tamaño de tu imagen original */
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 22;
+}
+
+.flower-corner.left {
+  left: 0;
+  background-image: url('/flores-izquierda.png');
+  background-position: bottom left;
+}
+
+.flower-corner.right {
+  right: 0;
+  background-image: url('/flores-derecha.png');
+  background-position: bottom right;
+}
+
+/* El centro que se repite infinitamente */
+.flower-center-repeat {
+  width: 100%;
+  height: 180px; /* Un poco más baja que las esquinas para dar profundidad */
+  background-image: url('/flores-centro.png');
+  background-repeat: repeat-x; /* Se repite las veces necesarias */
+  background-position: bottom center;
+  background-size: contain;
+  z-index: 21;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .flower-banner-bottom {
+    height: 140px;
   }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-    filter: blur(0); 
+  .flower-corner {
+    width: 150px;
+  }
+  .flower-center-repeat {
+    height: 100px;
+  }
+  .contenido-pregunta {
+    margin-bottom: 120px; /* Para que no tape los botones en pantallas chicas */
   }
 }

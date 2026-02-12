@@ -8,7 +8,6 @@
 
 @if (loading) {
   <div class="intro-overlay" [class.fade-out]="fadingOut">
-    
     <div class="circle-container">
       @for (foto of fotos; track $index) {
         <div class="heart-item" [style.--i]="$index">
@@ -28,18 +27,21 @@
   </div>
 } @else {
   <div class="contenedor-san-valentin fade-in">
-    <h1>¿Quieres ser mi San Valentín? ❤️</h1>
-    
-    <div class="botones" [class.invertir]="botonesInvertidos">
-      <button (click)="aceptar()" class="btn-si">¡SÍ! 😍</button>
+    <div class="corazones-superior-repeat"></div>
+
+    <div class="contenido-pregunta">
+      <h1>¿Quieres ser mi San Valentín? ❤️</h1>
       
-      <button 
-        (mouseenter)="intercambiar()" 
-        (touchstart)="intercambiar()"
-        (click)="intercambiar()"
-        class="btn-no">
-        No 😢
-      </button>
+      <div class="botones" [class.invertir]="botonesInvertidos">
+        <button (click)="aceptar()" class="btn-si">¡SÍ! 😍</button>
+        <button (mouseenter)="intercambiar()" (touchstart)="intercambiar()" (click)="intercambiar()" class="btn-no">No 😢</button>
+      </div>
+    </div>
+
+    <div class="flower-banner-bottom">
+      <div class="flower-corner left"></div>
+      <div class="flower-center-repeat"></div>
+      <div class="flower-corner right"></div>
     </div>
   </div>
 }
