@@ -42,7 +42,7 @@ export class Portada implements OnInit {
         }, 1500);
       }
       this.cdr.detectChanges();
-    }, 8); 
+    }, 120); 
   }
 
   actualizarMensaje() {
