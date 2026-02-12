@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
+
+/* --- CAPA DE INTRO --- */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #ff4d6d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.circle-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  animation: girar 5s linear infinite; 
+}
+
+.heart-item {
+  position: absolute;
+  transform: rotate(calc(var(--i) * (360deg / 8))) translateY(-130px);
+}
+
+.heart-frame {
+  width: 90px;
+  height: 90px;
+  background-color: transparent; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: url(#heart-mask);
+  overflow: hidden;
+}
+
+.heart-img {
+  width: 125%; /* Imagen más grande para evitar bordes blancos */
+  height: 125%;
+  object-fit: cover;
+  transform: rotate(calc(var(--i) * (-360deg / 8))) scale(1.1);
+  animation: mantenerDerecha 25s linear infinite;
+}
+
+/* --- BARRA DE PROGRESO --- */
+.progress-wrapper {
+  width: 85%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.love-bar-container {
+  width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 2px solid white;
+  overflow: hidden;
+}
+
+.love-bar {
+  height: 100%;
+  background: white;
+  transition: width 0.2s ease-out; /* Transición más suave para la barra */
+}
+
+.loading-text {
+  color: white;
+  margin-top: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  /* Animación suave cuando cambia el texto */
+  animation: fadeText 0.5s ease-in-out;
+}
+
+@keyframes fadeText {
+  from { opacity: 0.5; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- SECCIÓN PREGUNTA --- */
+.contenedor-san-valentin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff5f7;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  color: #d63384;
+  margin-bottom: 40px;
+}
+
+.botones {
+  display: flex;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.invertir {
+  flex-direction: row-reverse;
+}
+
+button {
+  padding: 15px 35px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.btn-si { background: #ff4d6d; color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3); }
+.btn-no { background: #adb5bd; color: white; }
+
+/* --- KEYFRAMES --- */
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes mantenerDerecha {
+  from { transform: rotate(calc(var(--i) * (-360deg / 8) - 0deg)) scale(1.1); }
+  to { transform: rotate(calc(var(--i) * (-360deg / 8) - 360deg)) scale(1.1); }
+}
+
+.fade-out { animation: fadeOut 0.8s forwards; }
+.fade-in { animation: fadeIn 1.2s ease-out; }
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: scale(1.1); visibility: hidden; }
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+    filter: blur(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+    filter: blur(0); 
+  }
+}

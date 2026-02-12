@@ -1,0 +1,45 @@
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <clipPath id="heart-mask" clipPathUnits="objectBoundingBox">
+      <path d="M0.5,0.95 L0.444,0.893 C0.194,0.641,0.038,0.5,0.038,0.329 C0.038,0.19,0.147,0.081,0.287,0.081 C0.366,0.081,0.442,0.118,0.491,0.176 C0.539,0.118,0.615,0.081,0.694,0.081 C0.834,0.081,0.943,0.19,0.943,0.329 C0.943,0.5,0.787,0.641,0.538,0.894 L0.5,0.95 Z"></path>
+    </clipPath>
+  </defs>
+</svg>
+
+@if (loading) {
+  <div class="intro-overlay" [class.fade-out]="fadingOut">
+    
+    <div class="circle-container">
+      @for (foto of fotos; track $index) {
+        <div class="heart-item" [style.--i]="$index">
+          <div class="heart-frame">
+            <img [src]="foto" class="heart-img" [style.--i]="$index">
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="progress-wrapper">
+      <div class="love-bar-container">
+        <div class="love-bar" [style.width.%]="progreso"></div>
+      </div>
+      <p class="loading-text">{{ mensajeActual }} {{ progreso }}%</p>
+    </div>
+  </div>
+} @else {
+  <div class="contenedor-san-valentin fade-in">
+    <h1>¿Quieres ser mi San Valentín? ❤️</h1>
+    
+    <div class="botones" [class.invertir]="botonesInvertidos">
+      <button (click)="aceptar()" class="btn-si">¡SÍ! 😍</button>
+      
+      <button 
+        (mouseenter)="intercambiar()" 
+        (touchstart)="intercambiar()"
+        (click)="intercambiar()"
+        class="btn-no">
+        No 😢
+      </button>
+    </div>
+  </div>
+}
